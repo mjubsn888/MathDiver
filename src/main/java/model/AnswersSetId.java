@@ -2,27 +2,25 @@ package model;
 
 import java.util.*;
 
-public class AnswersMatch {
-
+public class AnswersSetId {
     Set<Integer> indicesSet;
     ArrayList<Integer> indicesList;
+    int max=4;
+    int min=1;
 
-    public AnswersMatch(){
+    public AnswersSetId(){
         indicesSet=new HashSet<>();
         indicesList=new ArrayList<>();
 
-        Random rdm=new Random(4, 1);
-
         while (indicesSet.size()<4) {
-            indicesSet.add(rdm.get1RandomInteger());
+            indicesSet.add(Random.get1RandomInteger(4,1));
         }
-
         indicesList.addAll(indicesSet);
     }
 
-    public void MatchAnswers(ArrayList<Answer> answersNotMatched){
+    public void setAnswersId(ArrayList<Answer> answersNoId){
         for (int i = 0; i < indicesList.size(); i++) {
             int t=indicesList.get(i);
-            answersNotMatched.get(i).setIdxAndId(t);        }
+            answersNoId.get(i).setIdx(t);        }
     }
 }

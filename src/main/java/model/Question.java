@@ -6,42 +6,57 @@ import java.util.Set;
 
 public class Question {
 
-    int correct;
-    String txtCorrect;
-    int[] params; //numbers (parameters) used in question
+    ArrayList<Integer> listParams; //numbers (parameters) used in question, such as 8-5=?
+    ArrayList<String> listParamsStr;
 
-    Answer answerCorrect;
-    Set<Answer> answersWIP;
-    ArrayList<Answer> answers;
+    Set<Integer> setAnswersContent;
+    ArrayList<Answer> listAnswers;
+
+    int max=30;
+    int min=1;
 
     public Question() {
-        //1.generate question
-        Random rdm = new Random();
-        this.params = rdm.get2RandomIntegers();
-        int result = params[1] - params[0];  //f=a-b
 
-        //2.generate answers
-        answersWIP = new HashSet<Answer>();
-        answerCorrect = new Answer(result, true);
-        answersWIP.add(answerCorrect);
-        int count = 1;
-        while (answersWIP.size() < 4) {
-            answersWIP.add(new Answer(rdm.get1RandomInteger(), false));
+        setAnswersContent=new HashSet<>();
+        listParamsStr=new ArrayList<>();
+        listAnswers=new ArrayList<>();
+
+        //1.generate question
+        this.listParams = Random.get2RandomIntegers(max, min);
+
+        for (int i = 0; i < listParams.size(); i++) {
+            listParamsStr.add(Integer.toString(listParams.get(i)));
+        }
+        int result = listParams.get(1) - listParams.get(0);  //f=a-b
+
+        //2.generate answers: correct answer
+
+        setAnswersContent.add(result);
+        while (setAnswersContent.size() < 4) {
+            int r= Random.get1RandomInteger(max, min);
+            setAnswersContent.add(r);
         }
 
-        answers=new ArrayList<>();
-        answers.addAll(answersWIP);
+        for (Integer content:setAnswersContent) {
+            listAnswers.add(new Answer(content));
+        }
 
-        AnswersMatch answersMatch=new AnswersMatch();
-        answersMatch.MatchAnswers(answers);
+        //3.set the correct answer
+        for (Answer answer:listAnswers) {
+            if(answer.getContent()==result){
+                answer.setIsCorrect(true);
+            }
+        }
+        //4. set answers id
+        AnswersSetId answersSetId=new AnswersSetId();
+        answersSetId.setAnswersId(listAnswers);
     }
 
-    public int[] getParams() {
-        return params;
+    public ArrayList<String> getListParamsStr() {
+        return listParamsStr;
     }
-
-    public ArrayList<Answer> getAnswers() {
-        return answers;
+    public ArrayList<Answer> getListAnswers() {
+        return listAnswers;
     }
 }
 

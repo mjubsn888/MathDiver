@@ -3,41 +3,21 @@ package model;
 public class Answer {
 
     private int content;
+    private String contentTxt;
     private boolean isCorrect=false;
-    private int idx; //idx=1; 1=A; 2=B
-    private String id; //id=A; idx is the number of A,B,C,D
+    private int idx; //idx=1; 1=A, 2=B, 3=C, 4=D
 
-
-    public Answer(){
-
+    public Answer(int content)
+    {
+        setContent(content);
+        this.contentTxt=Integer.toString(content);
     }
 
     public Answer(int content, boolean isCorrect)
     {
         setContent(content);
+        this.contentTxt=Integer.toString(content);
         setIsCorrect(isCorrect);
-    }
-
-    public String idxToId(int idx){
-        String id;
-        switch (idx){
-            case 1: id="A";
-            case 2: id="B";
-            case 3: id="C";
-            case 4: id="D";
-            default: id="X";
-        }
-        return id;
-    }
-
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setIdxAndId(int idx) {
-        this.idx = idx;
-        setId(idxToId(idx));
     }
 
     public void setIdx(int idx) {
@@ -56,15 +36,15 @@ public class Answer {
         return content;
     }
 
+    public String getContentTxt() {
+        return contentTxt;
+    }
+
     public boolean getIsCorrect() {
         return isCorrect;
     }
 
     public int getIdx() {
         return idx;
-    }
-
-    public String getId() {
-        return id;
     }
 }

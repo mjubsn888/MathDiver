@@ -1,64 +1,37 @@
 package model;
 
 import java.lang.Math;
+import java.util.ArrayList;
 
 public class Random {
 
-    int max=30;
-    int min=1;
-    int range=max-min+1;
+    //int max=30;
+    //int min=1;
+    //int range=max-min+1;
 
     Random(){}
 
-    Random(int max, int min){
-        this.max=max;
-        this.min=min;
-        this.range=max-min+1;//if missing, will not recalculate range
-    }
+    public static int get1RandomInteger(int max, int min){
 
-    public int get1RandomInteger(){
+        int range=max-min+1;
+
         return (int)(Math.random()*range)+min;
     }
 
-    public int[] get2RandomIntegers(){
-        int[] arr=new int[2];
-
-        int a=get1RandomInteger();
-        int b=get1RandomInteger();
+    public static ArrayList<Integer> get2RandomIntegers(int max, int min){ //sorted, in ascending order
+        ArrayList<Integer> list=new ArrayList<>();
+        int a=get1RandomInteger(max, min);
+        int b=get1RandomInteger(max, min);
 
         if(a>=b){
-            arr[0]=b;
-            arr[1]=a;
+            list.add(b);
+            list.add(a);
         }
         else{
-            arr[0]=a;
-            arr[1]=b;
+            list.add(a);
+            list.add(b);
         }
-
-        return arr;
+        return list;
     }
 
-    public void setMax(int max) {
-        this.max = max;
-    }
-
-    public void setMin(int min) {
-        this.min = min;
-    }
-
-    public void setRange(int range) {
-        this.range = range;
-    }
-
-    public int getMax() {
-        return max;
-    }
-
-    public int getMin() {
-        return min;
-    }
-
-    public int getRange() {
-        return range;
-    }
 }
