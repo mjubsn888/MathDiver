@@ -7,7 +7,12 @@ import javax.swing.JFrame;
  * @author mju
  */
 public class Frame3Parts extends JFrame {
-    public Frame3Parts() {        
+    
+    String userName;
+    
+    public Frame3Parts(String userName) {  
+        
+        this.userName=userName;
         initComponents();
         setLocationRelativeTo(null);        
         setVisible(true);
@@ -15,7 +20,7 @@ public class Frame3Parts extends JFrame {
         jButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrameK1Practice1 frameK1Practice1=new FrameK1Practice1();
+                FrameK1Practice1 frameK1Practice1=new FrameK1Practice1(userName);
                 dispose(); 
             }
         });
@@ -23,10 +28,13 @@ public class Frame3Parts extends JFrame {
         jButton4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrameK1 frameK1=new FrameK1();
+                FrameK1 frameK1=new FrameK1(userName);
                 dispose(); 
             }
         });
+        
+        jLabelUserName.setText(userName);
+        
     }   
     
     @SuppressWarnings("unchecked")
@@ -34,6 +42,7 @@ public class Frame3Parts extends JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabelUserName = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -49,20 +58,30 @@ public class Frame3Parts extends JFrame {
         jPanel1.setBackground(new java.awt.Color(153, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(240, 960));
 
+        jLabelUserName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelUserName.setText("username");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 240, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(153, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(240, 960));
 
+        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jButton4.setText("Back");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -85,6 +104,7 @@ public class Frame3Parts extends JFrame {
         jPanel3.setBackground(new java.awt.Color(0, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(800, 240));
 
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jButton1.setText("Practice");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -92,21 +112,22 @@ public class Frame3Parts extends JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(330, 330, 330)
+                .addGap(329, 329, 329)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(399, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(80, 80, 80))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(153, 255, 153));
         jPanel4.setPreferredSize(new java.awt.Dimension(800, 240));
 
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jButton2.setText("Test");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -114,21 +135,22 @@ public class Frame3Parts extends JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(333, 333, 333)
+                .addGap(327, 327, 327)
                 .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(110, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(102, 102, 102))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(103, 103, 103)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(0, 255, 255));
         jPanel5.setPreferredSize(new java.awt.Dimension(800, 240));
 
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jButton3.setText("Tutorial");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -136,16 +158,16 @@ public class Frame3Parts extends JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(337, 337, 337)
+                .addGap(322, 322, 322)
                 .addComponent(jButton3)
-                .addContainerGap(380, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(104, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(108, 108, 108))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(103, 103, 103)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -183,6 +205,7 @@ public class Frame3Parts extends JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabelUserName;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

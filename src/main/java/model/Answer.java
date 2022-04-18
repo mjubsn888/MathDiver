@@ -5,7 +5,8 @@ public class Answer {
     private int content;
     private String contentTxt;
     private boolean isCorrect=false;
-    private int idx; //idx=1; 1=A, 2=B, 3=C, 4=D
+    //private int idx; //idx=1; 1=A, 2=B, 3=C, 4=D
+    private String idx; //A, B, C, D
 
     public Answer(int content)
     {
@@ -20,9 +21,12 @@ public class Answer {
         setIsCorrect(isCorrect);
     }
 
-    public void setIdx(int idx) {
+    public void setIdx(String idx) {
         this.idx = idx;
     }
+
+
+
 
     public void setIsCorrect(boolean isCorrect) {
         this.isCorrect=isCorrect;
@@ -44,7 +48,7 @@ public class Answer {
         return isCorrect;
     }
 
-    public int getIdx() {
+    public String getIdx() {
         return idx;
     }
 }

@@ -3,24 +3,25 @@ package model;
 import java.util.*;
 
 public class AnswersSetId {
-    Set<Integer> indicesSet;
-    ArrayList<Integer> indicesList;
+    Set<Integer> setIndices;
+    ArrayList<Integer> listIndices;
     int max=4;
     int min=1;
 
     public AnswersSetId(){
-        indicesSet=new HashSet<>();
-        indicesList=new ArrayList<>();
+        setIndices =new HashSet<>();
+        listIndices =new ArrayList<>();
 
-        while (indicesSet.size()<4) {
-            indicesSet.add(Random.get1RandomInteger(4,1));
+        while (setIndices.size()<4) {
+            setIndices.add(Random.get1RandomInteger(4,1));
         }
-        indicesList.addAll(indicesSet);
+        listIndices.addAll(setIndices);
     }
 
     public void setAnswersId(ArrayList<Answer> answersNoId){
-        for (int i = 0; i < indicesList.size(); i++) {
-            int t=indicesList.get(i);
-            answersNoId.get(i).setIdx(t);        }
+        for (int i = 0; i < listIndices.size(); i++) {
+            int t= listIndices.get(i);
+            answersNoId.get(i).setIdx(MapDiffVarTyp.mapIntegerToString(t));
+        }
     }
 }

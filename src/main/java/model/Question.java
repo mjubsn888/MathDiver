@@ -11,6 +11,7 @@ public class Question {
 
     Set<Integer> setAnswersContent;
     ArrayList<Answer> listAnswers;
+    Answer answerCorrect;
 
     int max=30;
     int min=1;
@@ -30,7 +31,6 @@ public class Question {
         int result = listParams.get(1) - listParams.get(0);  //f=a-b
 
         //2.generate answers: correct answer
-
         setAnswersContent.add(result);
         while (setAnswersContent.size() < 4) {
             int r= Random.get1RandomInteger(max, min);
@@ -45,11 +45,16 @@ public class Question {
         for (Answer answer:listAnswers) {
             if(answer.getContent()==result){
                 answer.setIsCorrect(true);
+                answerCorrect=answer;
             }
         }
         //4. set answers id
         AnswersSetId answersSetId=new AnswersSetId();
         answersSetId.setAnswersId(listAnswers);
+    }
+
+    public Answer getAnswerCorrect() {
+        return answerCorrect;
     }
 
     public ArrayList<String> getListParamsStr() {
