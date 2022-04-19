@@ -1,7 +1,7 @@
 package control;
 
-import model.Question;
-import model.Question;
+import model.QuestionSubtraction;
+import model.QuestionSubtraction;
 import view.UIControlRadioButton;
 
 public class TestModel {

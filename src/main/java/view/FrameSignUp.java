@@ -24,7 +24,7 @@ public class FrameSignUp extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 userName=jTextFieldUserName.getText();
-                password=jPasswordField1.getPassword();
+                password=jPasswordField.getPassword();
 
                 if(Login.loginCheck(userName, password)){
                     FrameHome frameHome=new FrameHome(userName);
@@ -40,7 +40,7 @@ public class FrameSignUp extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jTextFieldUserName.setText("");
-                jPasswordField1.setText("");
+                jPasswordField.setText("");
             }
         });
         
@@ -64,7 +64,7 @@ public class FrameSignUp extends JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jTextFieldUserName = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jPasswordField = new javax.swing.JPasswordField();
         jLabelPassword = new javax.swing.JLabel();
         jLabelUserName = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -129,9 +129,6 @@ public class FrameSignUp extends JFrame {
         jPanel4.setPreferredSize(new java.awt.Dimension(800, 240));
 
         jTextFieldUserName.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jTextFieldUserName.setText("my username");
-
-        jPasswordField1.setText("jPasswordField1");
 
         jLabelPassword.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabelPassword.setText("password");
@@ -151,7 +148,7 @@ public class FrameSignUp extends JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextFieldUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                    .addComponent(jPasswordField1))
+                    .addComponent(jPasswordField))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -166,7 +163,7 @@ public class FrameSignUp extends JFrame {
                         .addComponent(jTextFieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(56, 56, 56))))
         );
@@ -243,7 +240,7 @@ public class FrameSignUp extends JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JTextField jTextFieldUserName;
     // End of variables declaration//GEN-END:variables
 }

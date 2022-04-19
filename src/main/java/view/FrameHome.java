@@ -20,7 +20,7 @@ public class FrameHome extends JFrame {
         jButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrameK1 frameK1=new FrameK1(userName);
+                FrameK1Subjects frameK1=new FrameK1Subjects(userName);
                 dispose(); 
             }
         });

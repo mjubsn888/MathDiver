@@ -6,29 +6,31 @@ import javax.swing.JFrame;
  *
  * @author mju
  */
-public class Frame3Parts extends JFrame {
+public class FrameK1AdditionMenu extends JFrame {
     
     String userName;
     
-    public Frame3Parts(String userName) {  
+    public FrameK1AdditionMenu(String userName) {  
         
         this.userName=userName;
         initComponents();
         setLocationRelativeTo(null);        
         setVisible(true);
         
-        jButton1.addActionListener(new ActionListener() {
+        jButtonPractice.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrameK1Practice1 frameK1Practice1=new FrameK1Practice1(userName);
-                dispose(); 
+                
+             FrameK1AdditionPractice frameK1PracticeAddition=new FrameK1AdditionPractice(userName);
+                
+             dispose(); 
             }
         });
         
         jButton4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrameK1 frameK1=new FrameK1(userName);
+                FrameK1Subjects frameK1=new FrameK1Subjects(userName);
                 dispose(); 
             }
         });
@@ -46,7 +48,7 @@ public class Frame3Parts extends JFrame {
         jPanel2 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jButtonPractice = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
@@ -104,8 +106,8 @@ public class Frame3Parts extends JFrame {
         jPanel3.setBackground(new java.awt.Color(0, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(800, 240));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jButton1.setText("Practice");
+        jButtonPractice.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jButtonPractice.setText("Practice");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -113,14 +115,14 @@ public class Frame3Parts extends JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(329, 329, 329)
-                .addComponent(jButton1)
+                .addComponent(jButtonPractice)
                 .addContainerGap(399, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(76, 76, 76)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonPractice, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(82, Short.MAX_VALUE))
         );
 
@@ -201,10 +203,10 @@ public class Frame3Parts extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonPractice;
     private javax.swing.JLabel jLabelUser;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

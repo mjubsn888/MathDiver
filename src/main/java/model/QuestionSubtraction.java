@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Question {
+public class QuestionSubtraction {
 
     ArrayList<Integer> listParams; //numbers (parameters) used in question, such as 8-5=?
     ArrayList<String> listParamsStr;
@@ -16,7 +16,7 @@ public class Question {
     int max=30;
     int min=1;
 
-    public Question() {
+    public QuestionSubtraction() {
 
         setAnswersContent=new HashSet<>();
         listParamsStr=new ArrayList<>();

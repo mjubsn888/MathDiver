@@ -3,13 +3,14 @@ package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import model.Question;
+import model.QuestionAddition;
+import model.QuestionSubtraction;
 
 /**
  *
  * @author mju
  */
-public class FrameK1Practice1 extends JFrame {
+public class FrameK1AdditionPractice extends JFrame {
 
     String answerCorrectIdx;
     String answerSelectedIdx;
@@ -17,7 +18,7 @@ public class FrameK1Practice1 extends JFrame {
     
     String userName;
 
-    public FrameK1Practice1(String useName) {
+    public FrameK1AdditionPractice(String useName) {
         //1.GUI components                
         initComponents();
         setLocationRelativeTo(null);        
@@ -28,15 +29,17 @@ public class FrameK1Practice1 extends JFrame {
         //jLabel10.setIcon(imagebkg);
         
         //load username
-        this.userName=useName;
-        
+        this.userName=useName;        
         jLabelUser.setText(userName);
+        
+        //set math operator
+        jLabelMathOperator1.setText("+");
 
         //3. add listener to buttons
         jButtonBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Frame3Parts frame3Parts=new Frame3Parts(userName);
+                FrameK1AdditionMenu frame3Parts=new FrameK1AdditionMenu(userName);
                 dispose();
             }
         });
@@ -107,7 +110,7 @@ public class FrameK1Practice1 extends JFrame {
     }
 
     public void refreshControls(){
-        Question q=new Question();
+        QuestionAddition q=new QuestionAddition();
         answerCorrectIdx=q.getAnswerCorrect().getIdx();
         jLabel1.setText(q.getListParamsStr().get(1));
         jLabel2.setText(q.getListParamsStr().get(0));
@@ -152,7 +155,7 @@ public class FrameK1Practice1 extends JFrame {
         jButtonBack = new javax.swing.JButton();
         jPanelQuestion = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabelMathOperator1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -249,9 +252,9 @@ public class FrameK1Practice1 extends JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("8");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("-");
+        jLabelMathOperator1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabelMathOperator1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelMathOperator1.setText("-");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -273,7 +276,7 @@ public class FrameK1Practice1 extends JFrame {
                 .addGap(205, 205, 205)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelMathOperator1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -288,7 +291,7 @@ public class FrameK1Practice1 extends JFrame {
                 .addContainerGap(80, Short.MAX_VALUE)
                 .addGroup(jPanelQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelMathOperator1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(100, 100, 100))
             .addGroup(jPanelQuestionLayout.createSequentialGroup()
@@ -460,7 +463,6 @@ public class FrameK1Practice1 extends JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelA;
@@ -468,6 +470,7 @@ public class FrameK1Practice1 extends JFrame {
     private javax.swing.JLabel jLabelB;
     private javax.swing.JLabel jLabelC;
     private javax.swing.JLabel jLabelD;
+    private javax.swing.JLabel jLabelMathOperator1;
     private javax.swing.JLabel jLabelRightAnswer;
     private javax.swing.JLabel jLabelUser;
     private javax.swing.JPanel jPanel1;
