@@ -24,13 +24,13 @@ public class FrameK1Practice1 extends JFrame {
         setVisible(true);
 
         //2, load image
-        ImageIcon imagebkg = new ImageIcon("C:\\1920x960.jpg");
-        jLabel10.setIcon(imagebkg);
+        //ImageIcon imagebkg = new ImageIcon("C:\\1920x960.jpg");
+        //jLabel10.setIcon(imagebkg);
         
         //load username
         this.userName=useName;
         
-        jLabelUserName.setText(userName);
+        jLabelUser.setText(userName);
 
         //3. add listener to buttons
         jButtonBack.addActionListener(new ActionListener() {
@@ -146,7 +146,7 @@ public class FrameK1Practice1 extends JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jLabelUserName = new javax.swing.JLabel();
+        jLabelUser = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButtonBack = new javax.swing.JButton();
@@ -180,8 +180,9 @@ public class FrameK1Practice1 extends JFrame {
 
         jLabel10.setText("jLabel10");
 
-        jLabelUserName.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jLabelUserName.setText("username");
+        jLabelUser.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabelUser.setText("user");
+        jLabelUser.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -191,14 +192,14 @@ public class FrameK1Practice1 extends JFrame {
                 .addGap(51, 51, 51)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -468,7 +469,7 @@ public class FrameK1Practice1 extends JFrame {
     private javax.swing.JLabel jLabelC;
     private javax.swing.JLabel jLabelD;
     private javax.swing.JLabel jLabelRightAnswer;
-    private javax.swing.JLabel jLabelUserName;
+    private javax.swing.JLabel jLabelUser;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

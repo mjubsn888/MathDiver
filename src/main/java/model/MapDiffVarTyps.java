@@ -1,6 +1,6 @@
 package model;
 
-public class MapDiffVarTyp {
+public class MapDiffVarTyps {
 
     public static String mapIntegerToString(int i) {
         String s = "";
