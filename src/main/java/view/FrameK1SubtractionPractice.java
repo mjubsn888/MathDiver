@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import model.QuestionSubtraction;
+import model.UIJRadioButton;
 
 /**
  *
@@ -23,10 +24,6 @@ public class FrameK1SubtractionPractice extends JFrame {
         setLocationRelativeTo(null);        
         setVisible(true);
 
-        //2, load image
-        //ImageIcon imagebkg = new ImageIcon("C:\\1920x960.jpg");
-        //jLabel10.setIcon(imagebkg);
-        
         //load username
         this.userName=useName;        
         jLabelUser.setText(userName);
@@ -38,7 +35,8 @@ public class FrameK1SubtractionPractice extends JFrame {
         jButtonBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrameK1SubtractionMenu frameK1SubtractionMenu=new FrameK1SubtractionMenu(userName);
+
+                FrameK1Subjects frameK1Subjects=new FrameK1Subjects(userName);
                 dispose();
             }
         });
@@ -58,7 +56,7 @@ public class FrameK1SubtractionPractice extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 //1. get selected button text
-                 answerSelectedIdx=UIControlRadioButton.getSelectedRadioButtonText(rbGroup);
+                 answerSelectedIdx= UIJRadioButton.getSelectedRadioButtonText(rbGroup);
 
                 if(answerSelectedIdx.equals("")){
                     JOptionPane.showMessageDialog(jPanelAnswer, "Please select an answer and click submit!", "Warning", JOptionPane.WARNING_MESSAGE);

@@ -1,10 +1,10 @@
-package view;
+package model;
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class UIControlRadioButton {
+public class UIJRadioButton {
 
     public static String getSelectedRadioButtonText(ButtonGroup buttonGroup)
     {

@@ -23,20 +23,14 @@ public class FrameK1Subjects extends JFrame {
         jButtonAddition.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-                FrameK1AdditionMenu frame3Parts=new FrameK1AdditionMenu(userName);
-                dispose();                
-                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                FrameOption frameOption=new FrameOption(userName, "addition");
             }
         });
         
         jButtonSubtraction.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-                FrameK1SubtractionMenu frameK1SubtractionMenu=new FrameK1SubtractionMenu(userName);
-                dispose();                
-                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                FrameOption frameOption=new FrameOption(userName, "subtraction");
             }
         });
 
