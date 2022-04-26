@@ -13,6 +13,7 @@ public class FrameSignUp extends JFrame {
     
     String userName;
     char[] password;
+    String loginMsg;
     
     public FrameSignUp() {  
         
@@ -26,12 +27,13 @@ public class FrameSignUp extends JFrame {
                 userName=jTextFieldUserName.getText();
                 password=jPasswordField.getPassword();
 
-                if(Login.loginCheck(userName, password)){
+                loginMsg=Login.loginCheck(userName, password);
+                if(loginMsg.equals("pass")){
                     FrameHome frameHome=new FrameHome(userName);
                     dispose();
                 }
                 else{
-                    JOptionPane.showMessageDialog(jPanel4, "error: username and password does not match", "Warning", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(jPanel4, loginMsg, "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });

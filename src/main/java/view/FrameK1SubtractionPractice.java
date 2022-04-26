@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import model.QuestionSubtraction;
-import model.UIJRadioButton;
+import model.UIControlRadioButton;
 
 /**
  *
@@ -56,7 +56,7 @@ public class FrameK1SubtractionPractice extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 //1. get selected button text
-                 answerSelectedIdx= UIJRadioButton.getSelectedRadioButtonText(rbGroup);
+                 answerSelectedIdx= UIControlRadioButton.getSelectedRadioButtonText(rbGroup);
 
                 if(answerSelectedIdx.equals("")){
                     JOptionPane.showMessageDialog(jPanelAnswer, "Please select an answer and click submit!", "Warning", JOptionPane.WARNING_MESSAGE);

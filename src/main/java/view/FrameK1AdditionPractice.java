@@ -7,12 +7,8 @@ import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import model.QuestionAddition;
-import model.UIJRadioButton;
-import model.UIJSlider;
-import model.UIScreen;
+import model.UIControlRadioButton;
 
 /**
  *
@@ -24,30 +20,12 @@ public class FrameK1AdditionPractice extends JFrame {
     String answerSelectedIdx;
     ButtonGroup rbGroup;
     String userName;
-    int[] screenDimension;
-    int screenSize;
 
     public FrameK1AdditionPractice(String useName)  {
         //1.GUI components                
         initComponents();
         setLocationRelativeTo(null);        
         setVisible(true);
-        
-        UIJSlider uIJSlider=new UIJSlider();
-        uIJSlider.setSliderForScreenSize(jSliderScreenSize);   
-        
-        //jSliderScreenSize.setMaximum(2);
-        
-        
-        jSliderScreenSize.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {  
-                screenSize=jSliderScreenSize.getValue();                  
-                screenDimension=UIScreen.setScreenDimension(screenSize);                 
-                
-            }
-        });
-        
 
         //2, load image
         try{
@@ -93,7 +71,7 @@ public class FrameK1AdditionPractice extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 //1. get selected button text
-                 answerSelectedIdx= UIJRadioButton.getSelectedRadioButtonText(rbGroup);
+                 answerSelectedIdx= UIControlRadioButton.getSelectedRadioButtonText(rbGroup);
 
                 if(answerSelectedIdx.equals("")){
                     JOptionPane.showMessageDialog(jPanelAnswer, "Please select an answer and click submit!", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -175,7 +153,7 @@ public class FrameK1AdditionPractice extends JFrame {
         jRadioButtonB.setEnabled(false);
         jRadioButtonC.setEnabled(false);
         jRadioButtonD.setEnabled(false);
-    }    
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -187,7 +165,6 @@ public class FrameK1AdditionPractice extends JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButtonBack = new javax.swing.JButton();
-        jSliderScreenSize = new javax.swing.JSlider();
         jPanelQuestion = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabelMathOperator1 = new javax.swing.JLabel();
@@ -268,20 +245,14 @@ public class FrameK1AdditionPractice extends JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(792, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jSliderScreenSize, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jSliderScreenSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addContainerGap(100, Short.MAX_VALUE)
                 .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
         );
@@ -524,6 +495,5 @@ public class FrameK1AdditionPractice extends JFrame {
     private javax.swing.JRadioButton jRadioButtonB;
     private javax.swing.JRadioButton jRadioButtonC;
     private javax.swing.JRadioButton jRadioButtonD;
-    private javax.swing.JSlider jSliderScreenSize;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,7 +4,7 @@
  */
 package view;
 
-import model.UIJRadioButton;
+import model.UIControlRadioButton;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -26,18 +26,15 @@ public class FrameOption extends javax.swing.JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //close JFrame without terminating the program
-        this.userName=userName;   
-        this.subject=subject;
 
         rbGroup=new ButtonGroup();
         rbGroup.add(jRadioButtonPractice);
         rbGroup.add(jRadioButtonTest);
-        rbGroup.add(jRadioButtonTutorial);
 
         jButtonYes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                strRadioButtonSelected= UIJRadioButton.getSelectedRadioButtonText(rbGroup);
+                strRadioButtonSelected= UIControlRadioButton.getSelectedRadioButtonText(rbGroup);
                 if(strRadioButtonSelected.equals("practice")) {
                     if (subject.equals("addition")) {
                         FrameK1AdditionPractice frameK1AdditionPractice = new FrameK1AdditionPractice(userName);
@@ -48,13 +45,6 @@ public class FrameOption extends javax.swing.JFrame {
                         dispose();
                     }
                 }
-            }
-        });
-        
-        jButtonCancel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
             }
         });
     }
@@ -70,8 +60,8 @@ public class FrameOption extends javax.swing.JFrame {
         jRadioButtonPractice = new javax.swing.JRadioButton();
         jRadioButtonTest = new javax.swing.JRadioButton();
         jButtonYes = new javax.swing.JButton();
-        jButtonCancel = new javax.swing.JButton();
-        jRadioButtonTutorial = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(300, 300));
@@ -84,10 +74,10 @@ public class FrameOption extends javax.swing.JFrame {
 
         jButtonYes.setText("select");
 
-        jButtonCancel.setText("cancel");
+        jButton1.setText("cancel");
 
-        jRadioButtonTutorial.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jRadioButtonTutorial.setText("tutorial");
+        jRadioButton1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jRadioButton1.setText("tutorial");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,13 +89,13 @@ public class FrameOption extends javax.swing.JFrame {
                         .addGap(55, 55, 55)
                         .addComponent(jButtonYes)
                         .addGap(34, 34, 34)
-                        .addComponent(jButtonCancel))
+                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(105, 105, 105)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jRadioButtonTest, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jRadioButtonPractice)
-                            .addComponent(jRadioButtonTutorial))))
+                            .addComponent(jRadioButton1))))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -116,11 +106,11 @@ public class FrameOption extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jRadioButtonTest)
                 .addGap(27, 27, 27)
-                .addComponent(jRadioButtonTutorial)
+                .addComponent(jRadioButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonYes, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47))
         );
 
@@ -132,10 +122,10 @@ public class FrameOption extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCancel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonYes;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButtonPractice;
     private javax.swing.JRadioButton jRadioButtonTest;
-    private javax.swing.JRadioButton jRadioButtonTutorial;
     // End of variables declaration//GEN-END:variables
 }
