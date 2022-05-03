@@ -1,5 +1,6 @@
 package view;
 import model.Login;
+import model.database.DBException;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +13,7 @@ import javax.swing.*;
 public class FrameLogin extends JFrame {
     
     String userName;
-    char[] password;
+    String password;
     String loginMsg;
     
     public FrameLogin() {  
@@ -24,11 +25,13 @@ public class FrameLogin extends JFrame {
         jButtonSubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 userName=jTextFieldUserName.getText();
-                password=jPasswordField.getPassword();
-                loginMsg=Login.loginCheck(userName, password);
-
+                password= String.valueOf(jPasswordField.getPassword());
+                try {
+                    loginMsg=Login.loginCheck(userName, password);
+                } catch (DBException dbException) {
+                    dbException.printStackTrace();
+                }
                 if(loginMsg.equals("pass")){
                     FrameHome frameHome=new FrameHome(userName);
                     dispose();
@@ -66,6 +69,7 @@ public class FrameLogin extends JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(640, 480));
+        setPreferredSize(new java.awt.Dimension(1280, 800));
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(240, 960));

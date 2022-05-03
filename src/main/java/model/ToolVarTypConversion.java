@@ -1,6 +1,6 @@
 package model;
 
-public class MapDiffVarTyps {
+public class ToolVarTypConversion {
 
     public static String mapIntegerToString(int i) {
         String s = "";
@@ -18,6 +18,7 @@ public class MapDiffVarTyps {
         }
         return s;
     }
+
 }
 
 
