@@ -4,44 +4,77 @@ import model.database.*;
 
 public class Login {
 
-    public static String loginCheck(String username, char[] password){
-       String loginMsg="pass";
-       String strPassword=String.valueOf(password);
+    private static String loginMsg;
 
-/*       if(username.equals("") || strPassword.equals(""))
-       {
-           loginMsg="user name or password is empty";
-       }*/
+    public static String loginCheck(String username, String password) throws DBException {
+        loginMsg = "pass";
 
-       if(checkLoginCredentials(username, password))
-       {
-           loginMsg="user name must match password";
-       }
-       return loginMsg;
-    }
-
-    public static boolean checkLoginCredentials(String username, char[] password){
-        boolean b=false;
-        if(username.equals(String.valueOf(password))){
-            b=true;
+        loginMsg = checkIfUsernamePasswordEmpty(username, password);
+        if(!loginMsg.equals("pass")){
+            return loginMsg;
         }
-        return b;
+
+        if (!User.checkIfUserExist(username)) {
+            loginMsg = "user does not exist";
+            return loginMsg;
+        }
+
+        loginMsg = checkIfUsernameMatchPassword(username, password);
+        return loginMsg;
     }
 
-    public static void signUp(String user_name, char[] password) throws DBException {
+    public static String signUpCheck(String username, String password, String passwordChk) throws DBException {
+        loginMsg = "pass";
+        loginMsg = checkIfBothPasswordMatch(password, passwordChk);
+        if(!loginMsg.equals("pass")){
+            return loginMsg;
+        }
 
-/*        if(loginCheck(user_name, password)) {
+        if (User.checkIfUserExist(username)) {
+            loginMsg = "user already exist";
+            return loginMsg;
+        }
+        loginMsg = checkIfUsernamePasswordEmpty(username, password);
+        if(!loginMsg.equals("pass")){
+            return loginMsg;
+        }
+        loginMsg = checkIfUsernameMatchPassword(username, password);
 
-
-            if (!User.checkIfUserExist(user_name)) {
-                User.insertNewUser(user_name, String.valueOf(password));
-                User.updateUserId();
-                Test.insertTestForNewUser(user_name);
-                Practice.insertPracticeForNewUser(user_name);
-                Reward.insertRewardForNewUser(user_name);
-            } else {
-                System.out.println("user already exist");
-            }
-        }*/
+        return loginMsg;
     }
+
+    public static void signUp(String username, String password) throws DBException {
+        User.insertNewUser(username, password);
+        User.updateUserId();
+        Test.insertTestForNewUser(username);
+        Practice.insertPracticeForNewUser(username);
+        Reward.insertRewardForNewUser(username);
+    }
+
+    public static String checkIfUsernameMatchPassword(String username, String password) {
+        loginMsg = "pass";
+        if (!username.equals(password)) {
+            loginMsg = "user name must match password";
+        }
+        return loginMsg;
+    }
+
+    public static String checkIfUsernamePasswordEmpty(String username, String password) throws DBException {
+        loginMsg = "pass";
+        if(username.equals("") || password.equals(""))
+        {
+            loginMsg="user name or password is empty";
+        }
+        return loginMsg;
+    }
+
+    public static String checkIfBothPasswordMatch(String password, String passwordCheck) {
+        loginMsg = "pass";
+        if (!password.equals(passwordCheck)) {
+            loginMsg = "both password must match";
+        }
+        return loginMsg;
+    }
+
 }
+

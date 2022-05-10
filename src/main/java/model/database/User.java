@@ -33,8 +33,8 @@ public class User {
     }
 
     public static boolean checkIfUserExist(String user_name) throws DBException {
-        User user=getUserByName(user_name);
         boolean b=false;
+        User user=getUserByName(user_name);
         if(user!=null){
             b=true;
         }

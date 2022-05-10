@@ -21,7 +21,12 @@ public class AnswersSetId {
     public void setAnswersId(ArrayList<Answer> answersNoId){
         for (int i = 0; i < listIndices.size(); i++) {
             int t= listIndices.get(i);
-            answersNoId.get(i).setIdx(MapDiffVarTyps.mapIntegerToString(t));
+            answersNoId.get(i).setIdx(ToolVarTypConversion.mapIntegerToString(t));
         }
     }
+
+    //finalize all test answers for submitting, unanswered will be given 0
+
+
+
 }

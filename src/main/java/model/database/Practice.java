@@ -22,5 +22,22 @@ public class Practice {
         }
     }
 
+    public static void updatePractice(String user_name, String test_id, int nbrOfCorrect, int nbrOfTotal) throws DBException {
 
+        String sql="update practice set correct=correct+?, total=total+? where user_name=? and test_id=?";
+        Connection conn=DBConnection.getConn();
+
+        //String efg="efg";
+        try(PreparedStatement preparedStatement=conn.prepareStatement(sql))
+        {
+            preparedStatement.setInt(1, nbrOfCorrect);
+            preparedStatement.setInt(2, nbrOfTotal);
+            preparedStatement.setString(3, user_name);
+            preparedStatement.setString(4, test_id);
+            preparedStatement.executeUpdate();
+        }
+        catch (SQLException ex) {
+            throw new DBException(ex);
+        }
+    }
 }

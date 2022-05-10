@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DBConnection {
     final private static String user="root";
-    final private static String password="1234";
+    final private static String password="root";
     final private static String url="jdbc:mysql://localhost:3306/mathdiver";
 
     private static Connection conn;
@@ -27,7 +27,7 @@ public class DBConnection {
         }
     }
 
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
 
-    }
+    }*/
 }
