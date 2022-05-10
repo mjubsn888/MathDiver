@@ -114,6 +114,18 @@ public class FrameActivityMenu extends javax.swing.JFrame {
         jButtonTutorial.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(level.equals("k1")){
+                    FrameK1Tutorial frameK1Tutorial=new FrameK1Tutorial(userName,level, subject);
+                    dispose();
+                }
+                if(level.equals("23")){
+                    Frame23Tutorial frame23Tutorial=new Frame23Tutorial(userName,level, subject);
+                    dispose();
+                }
+                if(level.equals("4")){
+                    Frame4Tutorial frame4Tutorial=new Frame4Tutorial(userName,level, subject);
+                    dispose();
+                }
                 
              //Frame23Subject1Tutorial frame23TutorialSubject1=new Frame23Subject1Tutorial(userName);
              

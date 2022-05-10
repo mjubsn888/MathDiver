@@ -99,6 +99,7 @@ public class Frame23Subjects extends JFrame {
         setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(640, 480));
         setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonMultiplication.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N

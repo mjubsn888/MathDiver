@@ -25,6 +25,9 @@ public class ToolColor {
         else if (colorName.equals("sand1")) {
             color=new Color(255,233,201); //wizard blue: #0072cc
         }
+        else if (colorName.equals("orange")){
+            color=new Color(255,204,0);
+        }
         else{
             color=new Color(0,114,204); //wizard blue: #0072cc
         }

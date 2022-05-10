@@ -25,6 +25,11 @@ public class ToolImage {
             listImageReference.add(new ImageReference("https://images2.imgbox.com/f3/f5/84zI2fbr_o.jpg","standard-k1-1280x720.jpg"));
             listImageReference.add(new ImageReference("https://images2.imgbox.com/2a/38/wI9ktsA8_o.jpg","standard-23-1280x720.jpg"));
             listImageReference.add(new ImageReference("https://images2.imgbox.com/33/bc/opvy8SBx_o.jpg","standard-4-1280x720.jpg"));
+            
+            listImageReference.add(new ImageReference("https://images2.imgbox.com/6e/2e/KC4qdwrS_o.png","background-tutorial-k1-1280x720.png"));
+            listImageReference.add(new ImageReference("https://images2.imgbox.com/c7/fe/2HOVDODs_o.png","background-tutorial-23-1280x720.png"));
+            listImageReference.add(new ImageReference("https://images2.imgbox.com/7f/ee/PSeneN3c_o.png","background-tutorial-4-1280x720.png"));
+            
         } catch (Exception e) {
 
         }

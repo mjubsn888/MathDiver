@@ -1,9 +1,2 @@
-<<<<<<< HEAD
-=======
-view\FrameOption.class
-control\TestView.class
 model\Answer.class
-view\FrameOption$1.class
-model\Random.class
-control\TestModel.class
->>>>>>> e8a9c60152c467b71999f1399b19a24b2269f20f
+control\TestView.class

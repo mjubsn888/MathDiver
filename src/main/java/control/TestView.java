@@ -1,18 +1,26 @@
 package control;
 
+import view.Frame23Tutorial;
 import view.FrameHome;
+import view.FrameK1Tutorial;
+import view.Frame4Tutorial;
 import view.login.FrameLogin;
-import view.test.FrameK1AdditionTest;
-import view.*;
 
 public class TestView {
     
-    public static void main(String[] args) {        
+    public static void main(String[] args) { 
+        
         FrameLogin frameLogin=new FrameLogin();
         //FrameSignUp frameSignUp=new FrameSignUp();        
         //FrameHome frameHome=new FrameHome("abc");
+        //Frame23Tutorial frame23Tutorial1=new Frame23Tutorial("abc");
+        
+        //Frame4Tutorial frame4Tutorial=new Frame4Tutorial("abc");
+        
+        //FrameK1Tutorial frameK1Tutorial1=new FrameK1Tutorial("abc");
 
-        //FrameHome frameHome=new FrameHome();
+        //Frame23Subjects1 frame23Subjects1=new Frame23Subjects1("abc");
+        //FrameHome frameHome=new FrameHome("abc");
         //FrameK1SubtractionPractice frameK1SubtractionPractice=new FrameK1SubtractionPractice("abc");
         //FrameK1AdditionPractice frameK1AdditionPractice=new FrameK1AdditionPractice("abc");
         //FrameActivityMenu frameActivityMenu=new FrameActivityMenu("abc", "Subtraction");
