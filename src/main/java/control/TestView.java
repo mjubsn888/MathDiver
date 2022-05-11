@@ -1,19 +1,23 @@
 package control;
 
+import model.database.DBException;
 import view.Frame23Tutorial;
 import view.FrameHome;
 import view.FrameK1Tutorial;
 import view.Frame4Tutorial;
+import view.FrameDashboard;
 import view.login.FrameLogin;
 
 public class TestView {
     
-    public static void main(String[] args) { 
+    public static void main(String[] args) throws DBException { 
         
-        FrameLogin frameLogin=new FrameLogin();
+        //FrameLogin frameLogin=new FrameLogin();
         //FrameSignUp frameSignUp=new FrameSignUp();        
-        //FrameHome frameHome=new FrameHome("abc");
+        FrameHome frameHome=new FrameHome("abc");
         //Frame23Tutorial frame23Tutorial1=new Frame23Tutorial("abc");
+        
+        //FrameDashboard frameDashboard=new FrameDashboard("abc");
         
         //Frame4Tutorial frame4Tutorial=new Frame4Tutorial("abc");
         

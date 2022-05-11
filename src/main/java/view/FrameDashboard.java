@@ -4,18 +4,117 @@
  */
 package view;
 
+import model.Dashboard;
+import model.ToolDashboard;
+import model.database.DBException;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Objects;
+import javax.swing.JComboBox;
+import model.DashboardItem;
+
 /**
  *
  * @author mju
  */
 public class FrameDashboard extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrameK1Rewards
-     */
-    public FrameDashboard() {
+    ToolDashboard toolDashboard;
+    ArrayList<Dashboard> listDashboard;
+    ArrayList<DashboardItem> listDashboardItems;
+    Dashboard dashboard;
+    DashboardItem dashboardItem;
+    Integer correct=0;
+    Integer total=0;
+    Integer percent;
+    float fPercent;
+    String subject;
+    
+
+
+    public FrameDashboard(String username) throws DBException {
+
+        toolDashboard=new ToolDashboard(username);
+        listDashboard=toolDashboard.getListDashboard();
+        
         initComponents();
-        setVisible(true);
+        setVisible(true);        
+
+        //jComboBoxLevel.addItem("k1-practice");
+        //jComboBoxLevel.addItem("k1-test");
+        //jComboBoxLevel.addItem("23-practice");
+        //jComboBoxLevel.addItem("23-test");
+        jComboBoxLevel.setSelectedIndex(0);
+        
+
+        dashboard=listDashboard.get(0);
+        listDashboardItems=dashboard.getListDashboardItems();
+
+
+        dashboardItem=listDashboardItems.get(0);
+        correct=dashboardItem.getCorrect();
+        total=dashboardItem.getTotal();
+        subject=dashboardItem.getSubject();
+                    
+        if(total>0){
+           fPercent=(correct.floatValue()/total.floatValue())*100;
+        }
+
+        jLabelSubject1.setText(subject);
+        jLabelSubject1Correct.setText(Integer.toString(correct));
+        jLabelSubject1Total.setText(Integer.toString(total));
+        jLabelSubject1Percent.setText(String.valueOf(fPercent));
+
+
+        dashboardItem=listDashboardItems.get(1);
+        correct=dashboardItem.getCorrect();
+        total=dashboardItem.getTotal();
+        subject=dashboardItem.getSubject();
+
+        if(total>0){
+            fPercent=(correct.floatValue()/total.floatValue())*100;
+        }
+
+        jLabelSubject2.setText(subject);
+        jLabelSubject2Correct.setText(Integer.toString(correct));
+        jLabelSubject2Total.setText(Integer.toString(total));
+        jLabelSubject2Percent.setText(String.valueOf(fPercent));
+
+
+
+        jComboBoxLevel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(Objects.requireNonNull(jComboBoxLevel.getSelectedItem()).toString().equals("k1-practice")){
+                    
+                    dashboard=listDashboard.get(0);
+                    listDashboardItems=dashboard.getListDashboardItems();                   
+                    dashboardItem=listDashboardItems.get(0);
+                    
+                    correct=dashboardItem.getCorrect();
+                    total=dashboardItem.getTotal();
+                    subject=dashboardItem.getSubject();
+                    
+                    if(total>0){
+                        fPercent=(correct.floatValue()/total.floatValue())*100;
+                    }
+
+                    jLabelSubject1.setText(subject);
+                    jLabelSubject1Correct.setText(Integer.toString(correct));
+                    jLabelSubject1Total.setText(Integer.toString(total));
+                    jLabelSubject1Percent.setText(String.valueOf(fPercent));                   
+                    
+                    
+
+                }
+                
+            }
+            
+        });
+
+
     }
 
     /**
@@ -43,7 +142,6 @@ public class FrameDashboard extends javax.swing.JFrame {
         jLabelSubject3Percent = new javax.swing.JLabel();
         jLabelPercent = new javax.swing.JLabel();
         jButtonBack = new javax.swing.JButton();
-        jComboBoxActivity = new javax.swing.JComboBox<>();
         jComboBoxLevel = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -87,9 +185,7 @@ public class FrameDashboard extends javax.swing.JFrame {
         jButtonBack.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonBack.setMaximumSize(new java.awt.Dimension(120, 80));
 
-        jComboBoxActivity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBoxLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "k1-practice", "k1-test", "23-practice", "23-test" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,8 +198,7 @@ public class FrameDashboard extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelSubject3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelSubject1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelSubject2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxActivity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelSubject2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(92, 92, 92)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBoxLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -145,9 +240,7 @@ public class FrameDashboard extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxActivity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jComboBoxLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -179,51 +272,14 @@ public class FrameDashboard extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrameDashboard().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
-    private javax.swing.JComboBox<String> jComboBoxActivity;
     private javax.swing.JComboBox<String> jComboBoxLevel;
     private javax.swing.JLabel jLabelCorrect;
     private javax.swing.JLabel jLabelPercent;

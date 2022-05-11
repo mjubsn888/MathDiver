@@ -40,7 +40,6 @@
                           <Component id="jLabelSubject3" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
                           <Component id="jLabelSubject1" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
                           <Component id="jLabelSubject2" min="-2" pref="123" max="-2" attributes="0"/>
-                          <Component id="jComboBoxActivity" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -98,10 +97,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jComboBoxActivity" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBoxLevel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jComboBoxLevel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -144,7 +140,7 @@
                       <Component id="jButtonBack" min="-2" pref="120" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="133" max="32767" attributes="0"/>
+              <EmptySpace pref="131" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -238,30 +234,10 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBoxActivity">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JComboBox" name="jComboBoxLevel">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;k1-practice&quot;, &quot;k1-test&quot;, &quot;23-practice&quot;, &quot;23-test&quot; })" type="code"/>
         </Property>
       </Properties>
       <AuxValues>

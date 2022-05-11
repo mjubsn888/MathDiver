@@ -4,18 +4,59 @@
  */
 package view;
 
+import model.ToolImage;
+import model.ToolReward;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author mju
  */
 public class FrameK1Rewards extends javax.swing.JFrame {
 
+    String userName;
+    String level;
+    ToolImage toolImage;
+    ImageIcon imageIcon;
+    ToolReward toolReward;
+
     /**
      * Creates new form FrameK1Rewards
      */
-    public FrameK1Rewards() {
+    public FrameK1Rewards(String username) {
+        this.userName=username;
+        this.level="k1";
+        toolReward=new ToolReward(username, level);
+
         initComponents();
         setVisible(true);
+
+        if(toolReward.getReward_1()>=0) {
+            jLabelReward1.setText("Diamond");
+        }
+
+        if(toolReward.getReward_2()>=0) {
+            jLabelReward2.setText("Bullion");
+        }
+
+        if(toolReward.getReward_3()>=0) {
+            jLabelReward3.setText("scroll");
+        }
+
+        if(toolReward.getReward_4()>=0) {
+            jLabelReward4.setText("scroll");
+        }
+
+        jButtonBack.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FrameHome frameHome=new FrameHome(userName);
+                dispose();
+            }
+        });
     }
 
     /**
@@ -105,41 +146,6 @@ public class FrameK1Rewards extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameK1Rewards.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameK1Rewards.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameK1Rewards.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameK1Rewards.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrameK1Rewards().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;

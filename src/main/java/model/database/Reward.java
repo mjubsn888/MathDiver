@@ -5,6 +5,7 @@ import model.ToolArrayList;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -15,12 +16,15 @@ public class Reward {
     int nbrCorrect=0;
     int nbrTotal=0;
 
+
     public Reward(){
 
         toolAnswer=new ToolAnswer();
         listAnswerBool=toolAnswer.getListAnswerBool();
         //listQuestionsAnswered=new ArrayList<>();
     }
+
+
 
     public void addQuestionAnswered(boolean isCorrect, String user_name, String level) throws DBException {
 
