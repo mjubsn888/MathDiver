@@ -52,7 +52,7 @@ public class FrameActivityMenu extends javax.swing.JFrame {
             for (ImageReference imageRef : toolImage.getListImageReference()) {
                 if (imageRef.getImageName().equals("standard-k1-1280x720.jpg") && level.equals("k1")) {
                     imageIcon = new ImageIcon(ImageIO.read(new URL(imageRef.getStrUrl())));
-                    jLabelBackground.setIcon(imageIcon);
+                    jLabelBackground.setIcon(imageIcon);                   
                 }
                 if (imageRef.getImageName().equals("standard-23-1280x720.jpg") && level.equals("23")) {
                     imageIcon = new ImageIcon(ImageIO.read(new URL(imageRef.getStrUrl())));
@@ -66,7 +66,9 @@ public class FrameActivityMenu extends javax.swing.JFrame {
                 {
                     imageIcon = new ImageIcon(ImageIO.read(new URL(imageRef.getStrUrl())));
                     jButtonBack.setIcon(imageIcon);
-                }            }
+                }            
+            }
+            
         }
         catch (Exception ex)
         {

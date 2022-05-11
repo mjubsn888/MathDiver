@@ -43,8 +43,7 @@ public class FrameHome extends JFrame {
                 if (imageRef.getImageName().equals("homepage-1280x720.jpg")) {
                     imageIcon = new ImageIcon(ImageIO.read(new URL(imageRef.getStrUrl())));
                     jLabelBackground.setIcon(imageIcon);
-                }
-                
+                }                
                 
                 if(imageRef.getImageName().equals("back-120x80.jpg"))
                 {
@@ -64,8 +63,7 @@ public class FrameHome extends JFrame {
                     jButton23.setIcon(imageIcon);
                     jButton23.setOpaque(false);
                     jButton23.setBorderPainted(false);
-                }
-                
+                }                
                 
                 if(imageRef.getImageName().equals("porthole-4-180x160.png"))
                 {
@@ -79,9 +77,6 @@ public class FrameHome extends JFrame {
                     imageIcon = new ImageIcon(ImageIO.read(new URL(imageRef.getStrUrl())));
                     jButtonDashboard.setIcon(imageIcon);
                 }
-                
-                
-                
             }
         }
         catch (Exception ex)
@@ -176,7 +171,6 @@ public class FrameHome extends JFrame {
                 }
             }
         });
-
     }   
     
     @SuppressWarnings("unchecked")

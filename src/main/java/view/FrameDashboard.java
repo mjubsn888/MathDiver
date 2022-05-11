@@ -10,10 +10,15 @@ import model.database.DBException;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
-import javax.swing.JComboBox;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import model.DashboardItem;
+import model.ImageReference;
+import model.ToolImage;
+import view.login.FrameLogin;
 
 /**
  *
@@ -31,8 +36,8 @@ public class FrameDashboard extends javax.swing.JFrame {
     Integer percent;
     float fPercent;
     String subject;
-    
-
+    ToolImage toolImage;
+    ImageIcon imageIcon;
 
     public FrameDashboard(String username) throws DBException {
 
@@ -40,19 +45,39 @@ public class FrameDashboard extends javax.swing.JFrame {
         listDashboard=toolDashboard.getListDashboard();
         
         initComponents();
-        setVisible(true);        
+        setVisible(true);    
+        
+        //load image
+        try {
+            toolImage = new ToolImage();
+            for (ImageReference imageRef : toolImage.getListImageReference()) {
+                
+                //one if statement for one image
+                if (imageRef.getImageName().equals("background-plain-1280x720.png")) {
+                    imageIcon = new ImageIcon(ImageIO.read(new URL(imageRef.getStrUrl())));
+                    jLabelBackground.setIcon(imageIcon);
+                }
+                if (imageRef.getImageName().equals("back-120x80.jpg")) {
+                    imageIcon = new ImageIcon(ImageIO.read(new URL(imageRef.getStrUrl())));
+                    jButtonBack.setIcon(imageIcon);
+                }
+                
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
 
         //jComboBoxLevel.addItem("k1-practice");
         //jComboBoxLevel.addItem("k1-test");
         //jComboBoxLevel.addItem("23-practice");
         //jComboBoxLevel.addItem("23-test");
-        jComboBoxLevel.setSelectedIndex(0);
+        //jComboBoxLevel.setSelectedIndex(0);
         
 
         dashboard=listDashboard.get(0);
         listDashboardItems=dashboard.getListDashboardItems();
-
-
         dashboardItem=listDashboardItems.get(0);
         correct=dashboardItem.getCorrect();
         total=dashboardItem.getTotal();
@@ -81,40 +106,14 @@ public class FrameDashboard extends javax.swing.JFrame {
         jLabelSubject2Correct.setText(Integer.toString(correct));
         jLabelSubject2Total.setText(Integer.toString(total));
         jLabelSubject2Percent.setText(String.valueOf(fPercent));
-
-
-
-        jComboBoxLevel.addActionListener(new ActionListener() {
+        
+        jButtonBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(Objects.requireNonNull(jComboBoxLevel.getSelectedItem()).toString().equals("k1-practice")){
-                    
-                    dashboard=listDashboard.get(0);
-                    listDashboardItems=dashboard.getListDashboardItems();                   
-                    dashboardItem=listDashboardItems.get(0);
-                    
-                    correct=dashboardItem.getCorrect();
-                    total=dashboardItem.getTotal();
-                    subject=dashboardItem.getSubject();
-                    
-                    if(total>0){
-                        fPercent=(correct.floatValue()/total.floatValue())*100;
-                    }
-
-                    jLabelSubject1.setText(subject);
-                    jLabelSubject1Correct.setText(Integer.toString(correct));
-                    jLabelSubject1Total.setText(Integer.toString(total));
-                    jLabelSubject1Percent.setText(String.valueOf(fPercent));                   
-                    
-                    
-
-                }
-                
+                FrameHome frameHome=new FrameHome(username);
+                dispose(); 
             }
-            
-        });
-
-
+        });  
     }
 
     /**
@@ -142,145 +141,75 @@ public class FrameDashboard extends javax.swing.JFrame {
         jLabelSubject3Percent = new javax.swing.JLabel();
         jLabelPercent = new javax.swing.JLabel();
         jButtonBack = new javax.swing.JButton();
-        jComboBoxLevel = new javax.swing.JComboBox<>();
+        jLabelBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(640, 480));
         setPreferredSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelSubject1.setText("jLabel1");
+        getContentPane().add(jLabelSubject1, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 191, 123, 42));
 
         jLabelSubject2.setText("jLabel1");
+        getContentPane().add(jLabelSubject2, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 310, 123, 42));
 
         jLabelSubject3.setText("jLabel1");
+        getContentPane().add(jLabelSubject3, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 420, 123, 42));
 
         jLabelSubject1Correct.setText("jLabel1");
+        getContentPane().add(jLabelSubject1Correct, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 191, 87, 42));
 
         jLabelSubject2Correct.setText("jLabel1");
+        getContentPane().add(jLabelSubject2Correct, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 310, 87, 42));
 
         jLabelSubject3Correct.setText("jLabel1");
+        getContentPane().add(jLabelSubject3Correct, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 420, 87, 42));
 
         jLabelSubject1Total.setText("jLabel1");
+        getContentPane().add(jLabelSubject1Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(489, 191, 87, 42));
 
         jLabelSubject2Total.setText("jLabel1");
+        getContentPane().add(jLabelSubject2Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(489, 310, 87, 42));
 
         jLabelSubject3Total.setText("jLabel1");
+        getContentPane().add(jLabelSubject3Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(489, 420, 87, 42));
 
         jLabelCorrect.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelCorrect.setText("correct");
+        getContentPane().add(jLabelCorrect, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 131, 87, 42));
 
         jLabelTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTotal.setText("total");
+        getContentPane().add(jLabelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(489, 131, 87, 42));
 
         jLabelSubject1Percent.setText("jLabel1");
+        getContentPane().add(jLabelSubject1Percent, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 191, 87, 42));
 
         jLabelSubject2Percent.setText("jLabel1");
+        getContentPane().add(jLabelSubject2Percent, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 310, 87, 42));
 
         jLabelSubject3Percent.setText("jLabel1");
+        getContentPane().add(jLabelSubject3Percent, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 420, 87, 42));
 
         jLabelPercent.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelPercent.setText("%");
+        getContentPane().add(jLabelPercent, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 131, 87, 42));
 
         jButtonBack.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonBack.setMaximumSize(new java.awt.Dimension(120, 80));
+        getContentPane().add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(806, 26, 80, 120));
 
-        jComboBoxLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "k1-practice", "k1-test", "23-practice", "23-test" }));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelSubject3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelSubject1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelSubject2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(92, 92, 92)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBoxLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelSubject2Correct, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelSubject3Correct, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(95, 95, 95)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabelSubject2Total, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelSubject3Total, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(307, 307, 307)
-                                .addComponent(jLabelSubject1Correct, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabelCorrect, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(112, 112, 112)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelSubject1Total, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelSubject1Percent, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelPercent, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelSubject2Percent, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelSubject3Percent, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jComboBoxLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelPercent, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabelSubject1Percent, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabelTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelCorrect, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelSubject1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabelSubject1Correct, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabelSubject1Total, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(77, 77, 77)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabelSubject2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelSubject2Correct, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelSubject2Total, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelSubject2Percent, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(68, 68, 68)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabelSubject3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelSubject3Correct, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelSubject3Total, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelSubject3Percent, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(131, Short.MAX_VALUE))
-        );
+        jLabelBackground.setText("background-test.jpg");
+        getContentPane().add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
-    private javax.swing.JComboBox<String> jComboBoxLevel;
+    private javax.swing.JLabel jLabelBackground;
     private javax.swing.JLabel jLabelCorrect;
     private javax.swing.JLabel jLabelPercent;
     private javax.swing.JLabel jLabelSubject1;

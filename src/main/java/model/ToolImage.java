@@ -30,7 +30,11 @@ public class ToolImage {
             listImageReference.add(new ImageReference("https://images2.imgbox.com/c7/fe/2HOVDODs_o.png","background-tutorial-23-1280x720.png"));
             listImageReference.add(new ImageReference("https://images2.imgbox.com/7f/ee/PSeneN3c_o.png","background-tutorial-4-1280x720.png"));
             
+            listImageReference.add(new ImageReference("https://images2.imgbox.com/65/ab/4GiZgXoi_o.jpg","background-plain-1280x720.png"));
+            
             //listImageReference.add(new ImageReference("https://images2.imgbox.com/49/c7/Iml3VTyf_o.jpg","orange"));
+            
+            
             
         } catch (Exception e) {
 

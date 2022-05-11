@@ -4,12 +4,15 @@
  */
 package view;
 
+import model.ImageReference;
 import model.ToolImage;
 import model.ToolReward;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 /**
  *
@@ -27,12 +30,35 @@ public class FrameK1Rewards extends javax.swing.JFrame {
      * Creates new form FrameK1Rewards
      */
     public FrameK1Rewards(String username) {
+        initComponents();
+        setVisible(true);
+        
         this.userName=username;
         this.level="k1";
         toolReward=new ToolReward(username, level);
+        jLabelUsername.setText(username);
+        
+        //load image
+        try {
+            toolImage = new ToolImage();
+            for (ImageReference imageRef : toolImage.getListImageReference()) {
 
-        initComponents();
-        setVisible(true);
+                //one if statement for one image
+                if (imageRef.getImageName().equals("background-plain-1280x720.png")) {
+                    imageIcon = new ImageIcon(ImageIO.read(new URL(imageRef.getStrUrl())));
+                    jLabelBackground.setIcon(imageIcon);
+                }
+                if (imageRef.getImageName().equals("back-120x80.jpg")) {
+                    imageIcon = new ImageIcon(ImageIO.read(new URL(imageRef.getStrUrl())));
+                    jButtonBack.setIcon(imageIcon);
+                }
+
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
 
         if(toolReward.getReward_1()>=0) {
             jLabelReward1.setText("Diamond");
@@ -73,85 +99,61 @@ public class FrameK1Rewards extends javax.swing.JFrame {
         jLabelReward3 = new javax.swing.JLabel();
         jLabelReward4 = new javax.swing.JLabel();
         jButtonBack = new javax.swing.JButton();
+        jLabelBackground = new javax.swing.JLabel();
+        jLabelUsername = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(640, 480));
         setPreferredSize(new java.awt.Dimension(1280, 720));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelReward1.setBackground(new java.awt.Color(255, 255, 0));
         jLabelReward1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelReward1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabelReward1.setMaximumSize(new java.awt.Dimension(100, 100));
         jLabelReward1.setPreferredSize(new java.awt.Dimension(100, 100));
+        getContentPane().add(jLabelReward1, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 156, 161, 141));
 
         jLabelReward2.setBackground(new java.awt.Color(255, 255, 0));
         jLabelReward2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelReward2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabelReward2.setMaximumSize(new java.awt.Dimension(100, 100));
         jLabelReward2.setPreferredSize(new java.awt.Dimension(100, 100));
+        getContentPane().add(jLabelReward2, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 156, 161, 141));
 
         jLabelReward3.setBackground(new java.awt.Color(255, 255, 0));
         jLabelReward3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelReward3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabelReward3.setMaximumSize(new java.awt.Dimension(100, 100));
         jLabelReward3.setPreferredSize(new java.awt.Dimension(100, 100));
+        getContentPane().add(jLabelReward3, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 315, 161, 141));
 
         jLabelReward4.setBackground(new java.awt.Color(255, 255, 0));
         jLabelReward4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelReward4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabelReward4.setMaximumSize(new java.awt.Dimension(100, 100));
         jLabelReward4.setPreferredSize(new java.awt.Dimension(100, 100));
+        getContentPane().add(jLabelReward4, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 315, 161, 141));
 
         jButtonBack.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonBack.setMaximumSize(new java.awt.Dimension(120, 80));
+        getContentPane().add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(829, 30, 80, 120));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(248, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelReward3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(112, 112, 112)
-                                .addComponent(jLabelReward4, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelReward1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(112, 112, 112)
-                                .addComponent(jLabelReward2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(269, 269, 269))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelReward1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelReward2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelReward3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelReward4, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(152, Short.MAX_VALUE))
-        );
+        jLabelBackground.setText("background-test.jpg");
+        getContentPane().add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabelUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
+    private javax.swing.JLabel jLabelBackground;
     private javax.swing.JLabel jLabelReward1;
     private javax.swing.JLabel jLabelReward2;
     private javax.swing.JLabel jLabelReward3;
     private javax.swing.JLabel jLabelReward4;
+    private javax.swing.JLabel jLabelUsername;
     // End of variables declaration//GEN-END:variables
 }
